@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: Soon-Sullen-Guide
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  security:
+    user:
+      name: user
+      password: 1234
+
+debug: true
+
