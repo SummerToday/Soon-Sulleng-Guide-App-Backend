@@ -7,6 +7,15 @@ spring:
     user:
       name: user
       password: 1234
+    oauth2:
+      client:
+        provider:
+          google:
+            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+          kakao:
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+
 
 debug: true
+
 
