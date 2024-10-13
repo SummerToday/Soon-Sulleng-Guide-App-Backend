@@ -1,21 +1,38 @@
 spring:
   application:
     name: Soon-Sullen-Guide
-  autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  datasource:
+    url: jdbc:mysql://localhost:3306/soonsullengguide_db  # MySQL 데이터베이스 URL
+    username: root  # MySQL 사용자 이름
+    password: 1234  # MySQL 비밀번호
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update  # 데이터베이스 스키마 자동 업데이트
+    show-sql: true  # SQL 쿼리를 로그로 출력
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect  # MySQL8Dialect 사용
   security:
     user:
-      name: user
-      password: 1234
+      name: user  # 기본 사용자 이름
+      password: 1234  # 기본 사용자 비밀번호
     oauth2:
       client:
+        registration:
+          google:
+            client-id: your-google-client-id
+            scope: profile, email
         provider:
           google:
             user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
           kakao:
             user-info-uri: https://kapi.kakao.com/v2/user/me
 
+jwt:
+  secret: your-jwt-secret-key  # JWT 서명에 사용할 비밀키
+  token-validity: 3600000  # 액세스 토큰의 유효기간 (밀리초 단위, 예: 1시간)
+  refresh-token-validity: 604800000  # 리프레시 토큰의 유효기간 (밀리초 단위, 예: 7일)
 
+# 디버그 모드 활성화
 debug: true
-
-
