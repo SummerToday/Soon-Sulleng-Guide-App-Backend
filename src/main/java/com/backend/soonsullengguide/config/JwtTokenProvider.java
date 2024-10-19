@@ -13,10 +13,10 @@ public class JwtTokenProvider {
     @Value("${jwt.secret}")
     private String secretKey;
 
-    @Value("${jwt.token-validity}")
+    @Value("${jwt.token-validity}") // 액세스 토큰: 1시간
     private long tokenValidity;
 
-    @Value("${jwt.refresh-token-validity}")
+    @Value("${jwt.refresh-token-validity}") // 리프레시 토큰: 7일
     private long refreshTokenValidity;
 
     public String createAccessToken(String email, String role) {

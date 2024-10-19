@@ -62,26 +62,26 @@ public class GoogleAuthController {
         }
     }
 
-    @PostMapping("/check-login-status")  // GetMapping에서 PostMapping으로 변경
-    public ResponseEntity<Map<String, Object>> checkLoginStatus(@RequestHeader("Authorization") String refreshToken) {
+    @PostMapping("/check-login-status")
+    public ResponseEntity<Map<String, Object>> checkLoginStatus(@RequestHeader("Authorization") String accessToken) {
         Map<String, Object> response = new HashMap<>();
 
         // Bearer 토큰이 포함된 경우 제거
-        if (refreshToken != null && refreshToken.startsWith("Bearer ")) {
-            refreshToken = refreshToken.substring(7);
+        if (accessToken != null && accessToken.startsWith("Bearer ")) {
+            accessToken = accessToken.substring(7);
         }
 
-        if (refreshToken != null && jwtTokenProvider.validateToken(refreshToken)) {
-            String email = jwtTokenProvider.getEmailFromToken(refreshToken);
+        if (accessToken != null && jwtTokenProvider.validateToken(accessToken)) {
+            String email = jwtTokenProvider.getEmailFromToken(accessToken);
             Optional<User> userOptional = userRepository.findByEmail(email);
 
-            if (userOptional.isPresent() && userOptional.get().getRefreshToken().equals(refreshToken)) {
+            if (userOptional.isPresent()) {
                 response.put("isLoggedIn", true);
                 System.out.println("자동 로그인 성공: " + email);  // 로그인 성공 로그 출력
                 return ResponseEntity.status(HttpStatus.OK).body(response);
             } else {
                 response.put("isLoggedIn", false);
-                System.out.println("로그인 실패: 리프레시 토큰 불일치");  // 리프레시 토큰 불일치 로그 출력
+                System.out.println("로그인 실패: 사용자 정보 없음");  // 사용자 정보가 없을 때 로그 출력
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
             }
         } else {
@@ -90,6 +90,7 @@ public class GoogleAuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
     }
+
 
 
 
