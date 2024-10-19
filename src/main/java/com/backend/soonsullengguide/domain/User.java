@@ -17,8 +17,11 @@ public class User {
     @Column(name = "user_id")  // 데이터베이스에서는 user_id로 사용
     private Long id;  // 코드에서는 id로 명명
 
-    @Column(name = "nick", nullable = false)
+    @Column(name = "nick")
     private String nick;  // 닉네임
+
+    @Column(name = "user_name", nullable = false)
+    private String name;  // 닉네임
 
     @Column(name = "user_email")
     private String email;  // 이메일

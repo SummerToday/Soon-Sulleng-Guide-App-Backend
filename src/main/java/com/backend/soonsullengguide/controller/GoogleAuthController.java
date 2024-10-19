@@ -39,7 +39,7 @@ public class GoogleAuthController {
                 Optional<User> userOptional = userRepository.findByEmail(email);
                 User user = userOptional.orElse(new User());
                 user.setEmail(email);
-                user.setNick(userInfo.get("name").asText());
+                user.setName(userInfo.get("name").asText());
                 user.setRole("USER");
 
                 // JWT 및 리프레시 토큰 생성
@@ -52,7 +52,7 @@ public class GoogleAuthController {
                 // 리프레시 토큰과 액세스 토큰만 반환
                 response.put("accessToken", accessToken);
                 response.put("refreshToken", refreshToken);
-                response.put("userInfo", Map.of("email", email, "name", user.getNick()));
+                response.put("userInfo", Map.of("email", email, "name", user.getName()));
                 return ResponseEntity.status(HttpStatus.OK).body(response);
             } else {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("error", "Unable to fetch user info"));
