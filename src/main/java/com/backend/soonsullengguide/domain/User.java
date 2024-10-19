@@ -4,13 +4,18 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
-public class User {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,4 +39,41 @@ public class User {
 
     @Column(name = "refresh_token", length = 500)
     private String refreshToken;  // 리프레시 토큰
+
+    // UserDetails 인터페이스 메소드 구현
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // 사용자 권한 정보를 반환합니다.
+        return new ArrayList<>();
+    }
+
+    @Override
+    public String getPassword() {
+        return null;  // 비밀번호가 필요 없는 경우 null로 반환
+    }
+
+    @Override
+    public String getUsername() {
+        return email;  // UserDetails의 getUsername은 email을 반환하도록 설정
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
