@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .sessionManagement(sessionManagement ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))  // 세션 사용 안 함
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/google-login", "/api/refresh-token","/api/check-nickname").permitAll()
+                        .requestMatchers("/api/google-login", "/api/refresh-token","/api/check-nickname", "api/reviews").permitAll()
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(exceptionHandling ->

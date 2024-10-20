@@ -38,6 +38,8 @@ dependencies {
 	implementation 'mysql:mysql-connector-java'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'mysql:mysql-connector-java:8.0.33'  // MySQL Connector 의존성 추가
+	implementation 'commons-fileupload:commons-fileupload:1.4' // 파일 업로드 처리 의존성
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1' // Json 처리 의존성
 
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
