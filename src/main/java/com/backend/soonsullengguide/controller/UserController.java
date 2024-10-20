@@ -34,15 +34,21 @@ public class UserController {
 
     // 닉네임 존재 여부 확인
     @GetMapping("/check-nickname")
-    public ResponseEntity<Boolean> checkNickname(@RequestParam String email) {
+    public ResponseEntity<Map<String, Object>> checkNickname(@RequestParam String email) {
         Optional<User> user = userService.findByEmail(email);
+        Map<String, Object> response = new HashMap<>();
 
-        // 닉네임이 존재하는지 여부를 확인
-        if (user.isPresent() && user.get().getNick() != null) {
-            return ResponseEntity.ok(true);  // 닉네임이 있는 경우 true 반환
+        // 유저가 존재하고, 닉네임이 null이 아니며, 비어있지 않은 경우
+        if (user.isPresent() && user.get().getNick() != null && !user.get().getNick().isEmpty()) {
+            response.put("hasNickname", true);
+            response.put("nickname", user.get().getNick()); // 닉네임 반환
+            return ResponseEntity.ok(response);  // 닉네임이 있는 경우 true 반환
+        } else {
+            response.put("hasNickname", false);
+            return ResponseEntity.ok(response);  // 닉네임이 없는 경우 false 반환
         }
-        return ResponseEntity.ok(false);  // 닉네임이 없는 경우 false 반환
     }
+
 
     @PostMapping("/save-nickname")
     public ResponseEntity<?> saveNickname(@RequestBody Map<String, String> payload, @AuthenticationPrincipal User user) {
@@ -51,10 +57,11 @@ public class UserController {
         // 현재 로그인된 사용자의 닉네임을 업데이트
         if (nickname != null && !nickname.isEmpty()) {
             user.setNick(nickname);
-            userService.saveUser(user);
+            userService.saveUser(user);  // 사용자 정보 업데이트
             return ResponseEntity.ok("닉네임 저장 성공");
         } else {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("닉네임이 유효하지 않습니다.");
         }
     }
+
 }
