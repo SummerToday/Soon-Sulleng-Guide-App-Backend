@@ -40,6 +40,9 @@ public class Review {
     @Column(name = "review_date_time", nullable = false)
     private LocalDateTime reviewDateTime;
 
+    @Column(name = "nickname", nullable = false)  // 사용자 닉네임을 추가
+    private String nickname;
+
     @OneToMany(mappedBy = "review", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ReviewImage> images; // 이미지와 연관 관계
 }

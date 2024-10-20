@@ -70,4 +70,13 @@ public class JwtTokenProvider {
     public String getEmailFromToken(String token) {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody().getSubject();
     }
+
+    public String getUsernameFromToken(String token) {
+        return Jwts.parser()
+                .setSigningKey(secretKey)
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject(); // 토큰의 subject에 사용자 이름이 있다고 가정
+    }
+
 }
