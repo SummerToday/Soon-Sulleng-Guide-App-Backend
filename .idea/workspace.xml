@@ -4,17 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d10b64ca-7fbb-4ee0-a87b-8b73fc731a3d" name="Changes" comment="@AuthenticationPrincipal 적용">
+    <list default="true" id="d10b64ca-7fbb-4ee0-a87b-8b73fc731a3d" name="Changes" comment="로그인 상태 확인 로직 -&gt; 엑세스 토큰 확인 방식으로 변경">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/config/CustomAuthenticationEntryPoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/config/JwtRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/config/JwtRequestFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/config/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/config/JwtTokenProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/controller/GoogleAuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/controller/GoogleAuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +182,9 @@
       <workItem from="1728784600420" duration="11481000" />
       <workItem from="1728907052896" duration="1577000" />
       <workItem from="1729299241551" duration="8772000" />
-      <workItem from="1729341270093" duration="10729000" />
+      <workItem from="1729341270093" duration="16653000" />
+      <workItem from="1729387220871" duration="2636000" />
+      <workItem from="1729390449065" duration="1177000" />
     </task>
     <task id="LOCAL-00001" summary="intial commit">
       <option name="closed" value="true" />
@@ -243,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729350898132</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="로그인 상태 확인 로직 -&gt; 엑세스 토큰 확인 방식으로 변경">
+      <option name="closed" value="true" />
+      <created>1729352838077</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1729352838077</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,6 +294,7 @@
     <MESSAGE value="자동 로그인 관련 로그인 상태 체크 api 추가" />
     <MESSAGE value="user_name 컬럼 추가후 사용자 이름 삽입 완료." />
     <MESSAGE value="@AuthenticationPrincipal 적용" />
-    <option name="LAST_COMMIT_MESSAGE" value="@AuthenticationPrincipal 적용" />
+    <MESSAGE value="로그인 상태 확인 로직 -&gt; 엑세스 토큰 확인 방식으로 변경" />
+    <option name="LAST_COMMIT_MESSAGE" value="로그인 상태 확인 로직 -&gt; 엑세스 토큰 확인 방식으로 변경" />
   </component>
 </project>
