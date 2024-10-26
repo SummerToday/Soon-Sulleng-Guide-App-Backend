@@ -28,7 +28,7 @@ spring:
             user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
   web:
     resources:
-      static-locations: classpath:/static/, file:src/main/resources/static/uploads/
+      static-locations: classpath:/static/, file:///C:/Users/Gina Gu/IdeaProjects/Soon-Sulleng-Guide-App-Backend/src/main/resources/static/uploads
 
 
 
