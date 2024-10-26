@@ -40,8 +40,16 @@ public class Review {
     @Column(name = "review_date_time", nullable = false)
     private LocalDateTime reviewDateTime;
 
-    @Column(name = "nickname", nullable = false)  // 사용자 닉네임을 추가
-    private String nickname;
+    @Column(name = "price", length = 50)
+    private String price; // 가격 정보를 저장하는 필드
+
+    @Column(name = "is_favorite", nullable = false)
+    private Boolean isFavorite = false; // 찜 여부를 나타내는 필드, 기본값은 FALSE
+
+    // `users` 테이블과의 외래 키 관계를 나타내기 위해 user 필드를 추가
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)  // 외래 키 설정
+    private User user;
 
     @OneToMany(mappedBy = "review", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ReviewImage> images; // 이미지와 연관 관계

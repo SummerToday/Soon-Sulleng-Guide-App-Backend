@@ -26,6 +26,11 @@ spring:
         provider:
           google:
             user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
+  web:
+    resources:
+      static-locations: classpath:/static/, file:src/main/resources/static/uploads/
+
+
 
 jwt:
   secret: your-jwt-secret-key  # JWT 서명에 사용할 비밀키

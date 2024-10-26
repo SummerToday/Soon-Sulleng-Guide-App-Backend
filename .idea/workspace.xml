@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d10b64ca-7fbb-4ee0-a87b-8b73fc731a3d" name="Changes" comment="리뷰 기능 구현 (토큰 api x)">
+    <list default="true" id="d10b64ca-7fbb-4ee0-a87b-8b73fc731a3d" name="Changes" comment="리뷰 기능 구현 (토큰 api o)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.bin" afterDir="false" />
@@ -14,9 +15,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/config/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/config/JwtTokenProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/controller/ReviewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/domain/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/domain/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/repository/ReviewRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/repository/ReviewRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/service/ReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/service/ReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +60,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -103,37 +107,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build Soon-Sulleng-Guide-App-Backend.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.SoonSullengGuideApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;work-i&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Gina Gu/IdeaProjects/Soon-Sulleng-Guide-App-Backend/src/main/java/com/backend/soonsullengguide/util&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build Soon-Sulleng-Guide-App-Backend.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.SoonSullengGuideApplication.executor": "Run",
+    "git-widget-placeholder": "work-i",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Gina Gu/IdeaProjects/Soon-Sulleng-Guide-App-Backend/src/main/resources/static/images",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.backend.soonsullengguide.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gina Gu\IdeaProjects\Soon-Sulleng-Guide-App-Backend\src\main\resources\static\images" />
       <recent name="C:\Users\Gina Gu\IdeaProjects\Soon-Sulleng-Guide-App-Backend\src\main\java\com\backend\soonsullengguide\util" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gina Gu\IdeaProjects\Soon-Sulleng-Guide-App-Backend\src\main\resources\static\uploads" />
+      <recent name="C:\Users\Gina Gu\IdeaProjects\Soon-Sulleng-Guide-App-Backend\src\main\resources\static" />
+      <recent name="C:\Users\Gina Gu\IdeaProjects\Soon-Sulleng-Guide-App-Backend\uploads" />
+      <recent name="C:\Users\Gina Gu\IdeaProjects\Soon-Sulleng-Guide-App-Backend\src\main\resources\static\images" />
+      <recent name="C:\Users\Gina Gu\IdeaProjects\Soon-Sulleng-Guide-App-Backend\src\main\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -184,7 +197,9 @@
       <workItem from="1729299241551" duration="8772000" />
       <workItem from="1729341270093" duration="16653000" />
       <workItem from="1729387220871" duration="2636000" />
-      <workItem from="1729390449065" duration="21110000" />
+      <workItem from="1729390449065" duration="24052000" />
+      <workItem from="1729904781370" duration="22523000" />
+      <workItem from="1729937769576" duration="16709000" />
     </task>
     <task id="LOCAL-00001" summary="intial commit">
       <option name="closed" value="true" />
@@ -282,7 +297,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729430486380</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="리뷰 기능 구현 (토큰 api o)">
+      <option name="closed" value="true" />
+      <created>1729437417829</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1729437417829</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,6 +345,7 @@
     <MESSAGE value="자동로그인 api 및 시큐리티 설정 변경 완료" />
     <MESSAGE value="닉네임 저장 상태 체크 api, 닉네임 저장 api 추가" />
     <MESSAGE value="리뷰 기능 구현 (토큰 api x)" />
-    <option name="LAST_COMMIT_MESSAGE" value="리뷰 기능 구현 (토큰 api x)" />
+    <MESSAGE value="리뷰 기능 구현 (토큰 api o)" />
+    <option name="LAST_COMMIT_MESSAGE" value="리뷰 기능 구현 (토큰 api o)" />
   </component>
 </project>
