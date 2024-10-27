@@ -20,7 +20,7 @@ public class ReviewService {
     private final ReviewImageRepository reviewImageRepository;
 
     // 이미지 파일 저장 경로 (프로젝트 루트의 uploads 폴더)
-    private static final String IMAGE_UPLOAD_DIR = "uploads/images/";
+    private static final String IMAGE_UPLOAD_DIR = "src/main/resources/static/uploads/";
 
     public ReviewService(ReviewRepository reviewRepository, ReviewImageRepository reviewImageRepository) {
         this.reviewRepository = reviewRepository;

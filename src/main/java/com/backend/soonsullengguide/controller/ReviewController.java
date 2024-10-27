@@ -128,8 +128,17 @@ public class ReviewController {
 
             // 첫 번째 이미지 경로 추가
             if (!review.getImages().isEmpty()) {
-                String imagePath = review.getImages().get(0).getImagePath().replace("\\", "/");
-                reviewMap.put("thumbnail", baseUrl + imagePath);
+                String fullPath = review.getImages().get(0).getImagePath().replace("\\", "/");
+                String basePath = "src/main/resources/";
+                // 해당 문자열이 포함된 위치를 찾고 이를 기준으로 잘라냄
+                int startIndex = fullPath.indexOf(basePath);
+                if (startIndex != -1) {
+                    // basePath 이후의 경로를 잘라내어 uploads/~.jpg 형태로 반환
+                    String imagePath = fullPath.substring(startIndex + basePath.length());
+                    reviewMap.put("thumbnail", baseUrl + imagePath);
+                } else {
+                    reviewMap.put("thumbnail", fullPath); // basePath가 없을 경우 그대로 사용
+                }
             } else {
                 reviewMap.put("thumbnail", ""); // 이미지가 없을 경우 빈 문자열로 처리
             }
