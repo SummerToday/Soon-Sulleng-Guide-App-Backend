@@ -4,20 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d10b64ca-7fbb-4ee0-a87b-8b73fc731a3d" name="Changes" comment="홈 화면 리뷰 보기 기능 구현 완료">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/controller/FavoriteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/domain/Favorite.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/repository/FavoriteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/service/FavoriteService.java" afterDir="false" />
+    <list default="true" id="d10b64ca-7fbb-4ee0-a87b-8b73fc731a3d" name="Changes" comment="찜 API 구현, 찜 상태 API, 찜 삭제 API 구현">
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.10.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/backend/soonsullengguide/controller/ReviewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +193,7 @@
       <workItem from="1729390449065" duration="24052000" />
       <workItem from="1729904781370" duration="22523000" />
       <workItem from="1729937769576" duration="20428000" />
-      <workItem from="1729993371669" duration="11189000" />
+      <workItem from="1729993371669" duration="17111000" />
     </task>
     <task id="LOCAL-00001" summary="intial commit">
       <option name="closed" value="true" />
@@ -327,7 +323,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729962736705</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="찜 API 구현, 찜 상태 API, 찜 삭제 API 구현">
+      <option name="closed" value="true" />
+      <created>1730011229961</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1730011229961</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,7 +348,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="work-i" />
                       </list>
                     </value>
                   </entry>
@@ -371,6 +375,7 @@
     <MESSAGE value="홈 화면 리뷰 보기 기능 구현-1" />
     <MESSAGE value="홈 화면 리뷰 보기 기능 구현-2" />
     <MESSAGE value="홈 화면 리뷰 보기 기능 구현 완료" />
-    <option name="LAST_COMMIT_MESSAGE" value="홈 화면 리뷰 보기 기능 구현 완료" />
+    <MESSAGE value="찜 API 구현, 찜 상태 API, 찜 삭제 API 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="찜 API 구현, 찜 상태 API, 찜 삭제 API 구현" />
   </component>
 </project>

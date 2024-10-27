@@ -8,6 +8,7 @@ import com.backend.soonsullengguide.domain.User;
 import com.backend.soonsullengguide.repository.UserRepository;
 import com.backend.soonsullengguide.repository.ReviewRepository;
 import com.backend.soonsullengguide.service.ReviewService;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -157,6 +158,111 @@ public class ReviewController {
         response.put("카페", dessertReviews);
 
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Map<String, Object>> getReviewById(
+            @RequestHeader("Authorization") String token,
+            @PathVariable Long id) {
+        String actualToken = token.replace("Bearer ", "");
+
+        // 토큰에서 사용자 이메일 추출
+        String email = jwtTokenProvider.getUsernameFromToken(actualToken);
+
+        // 이메일로 사용자 정보 조회
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        if (optionalUser.isEmpty()) {
+            return ResponseEntity.status(404).body(Collections.emptyMap());
+        }
+
+        Optional<Review> optionalReview = reviewRepository.findById(id);
+        if (optionalReview.isEmpty()) {
+            return ResponseEntity.status(404).body(Collections.emptyMap());
+        }
+
+        Review review = optionalReview.get();
+        Map<String, Object> reviewMap = new HashMap<>();
+        reviewMap.put("id", review.getId());
+        reviewMap.put("category", review.getCategory());
+        reviewMap.put("storeName", review.getStoreName());
+        reviewMap.put("reviewTitle", review.getReviewTitle());
+        reviewMap.put("menuName", review.getMenuName());
+        reviewMap.put("reviewContent", review.getReviewContent());
+        reviewMap.put("stars", review.getStars());
+        reviewMap.put("price", review.getPrice());
+        reviewMap.put("reviewDateTime", review.getReviewDateTime().toString());
+
+        // 모든 이미지 경로 추가
+        String baseUrl = "http://10.0.2.2:8080/";
+        List<String> imagePaths = new ArrayList<>();
+        for (ReviewImage image : review.getImages()) {
+            String fullPath = image.getImagePath().replace("\\", "/");
+            String basePath = "src/main/resources/";
+            int startIndex = fullPath.indexOf(basePath);
+            if (startIndex != -1) {
+                String imagePath = fullPath.substring(startIndex + basePath.length());
+                imagePaths.add(baseUrl + imagePath);
+            } else {
+                imagePaths.add(fullPath);
+            }
+        }
+        reviewMap.put("images", imagePaths);
+
+        return ResponseEntity.ok(reviewMap);
+    }
+
+    @GetMapping("/allReviews")
+    public ResponseEntity<List<Map<String, Object>>> getAllReviews(
+            @RequestHeader("Authorization") String token) {
+        String actualToken = token.replace("Bearer ", "");
+
+        // 토큰에서 사용자 이메일 추출
+        String email = jwtTokenProvider.getUsernameFromToken(actualToken);
+
+        // 이메일로 사용자 정보 조회
+        Optional<User> optionalUser = userRepository.findByEmail(email);
+        if (optionalUser.isEmpty()) {
+            return ResponseEntity.status(404).body(Collections.emptyList());
+        }
+
+        // 최신순으로 정렬하여 모든 리뷰 가져오기 (`reviewDateTime`으로 정렬)
+        List<Review> reviews = reviewRepository.findAll(Sort.by(Sort.Direction.DESC, "reviewDateTime"));
+        List<Map<String, Object>> reviewList = new ArrayList<>();
+
+        // Android 에뮬레이터와 호환되는 서버 기본 URL 설정
+        String baseUrl = "http://10.0.2.2:8080/";
+
+        for (Review review : reviews) {
+            Map<String, Object> reviewMap = new HashMap<>();
+            reviewMap.put("id", review.getId());
+            reviewMap.put("category", review.getCategory());
+            reviewMap.put("storeName", review.getStoreName());
+            reviewMap.put("reviewTitle", review.getReviewTitle());
+            reviewMap.put("menuName", review.getMenuName());
+            reviewMap.put("reviewContent", review.getReviewContent());
+            reviewMap.put("stars", review.getStars());
+            reviewMap.put("price", review.getPrice());
+            reviewMap.put("reviewDateTime", review.getReviewDateTime().toString());
+
+            // 첫 번째 이미지 경로 추가
+            if (!review.getImages().isEmpty()) {
+                String fullPath = review.getImages().get(0).getImagePath().replace("\\", "/");
+                String basePath = "src/main/resources/";
+                int startIndex = fullPath.indexOf(basePath);
+                if (startIndex != -1) {
+                    String imagePath = fullPath.substring(startIndex + basePath.length());
+                    reviewMap.put("thumbnail", baseUrl + imagePath);
+                } else {
+                    reviewMap.put("thumbnail", baseUrl + fullPath); // basePath가 없을 경우 경로를 직접 사용
+                }
+            } else {
+                reviewMap.put("thumbnail", ""); // 이미지가 없을 경우 빈 문자열로 처리
+            }
+
+            reviewList.add(reviewMap);
+        }
+
+        return ResponseEntity.ok(reviewList);
     }
 
 
