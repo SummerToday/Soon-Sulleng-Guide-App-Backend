@@ -1,5 +1,6 @@
 package com.backend.soonsullengguide.controller;
 
+import com.backend.soonsullengguide.config.JwtTokenProvider;
 import com.backend.soonsullengguide.domain.User;
 import com.backend.soonsullengguide.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import java.util.Map;
 public class UserController {
 
     private final UserService userService;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @GetMapping("/{email}")
     public ResponseEntity<User> getUserByEmail(@PathVariable String email) {
@@ -63,5 +65,40 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("닉네임이 유효하지 않습니다.");
         }
     }
+
+    @GetMapping("/info")
+    public ResponseEntity<Map<String, Object>> getUserInfo(@RequestHeader("Authorization") String authorizationHeader) {
+        Map<String, Object> response = new HashMap<>();
+
+        // 1. Authorization 헤더로부터 토큰 추출
+        if (authorizationHeader == null || !authorizationHeader.startsWith("Bearer ")) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+        String token = authorizationHeader.substring(7); // "Bearer " 이후의 토큰 값만 사용
+
+        // 2. 토큰이 유효한지 검사
+        if (!jwtTokenProvider.validateToken(token)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
+        // 3. 토큰에서 이메일 추출
+        String email = jwtTokenProvider.getEmailFromToken(token);
+
+        // 4. 이메일로 사용자 조회
+        Optional<User> userOptional = userService.findByEmail(email);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+
+            // 5. JSON 응답 데이터 구성
+            response.put("email", user.getEmail());
+            response.put("realname", user.getName());
+            response.put("nickname", user.getNick());
+
+            return ResponseEntity.ok(response);  // JSON 형태로 반환
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();  // 사용자를 찾을 수 없는 경우 404 Not Found 반환
+        }
+    }
+
 
 }
