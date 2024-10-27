@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import com.backend.soonsullengguide.repository.ReviewRepository;
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.*;
