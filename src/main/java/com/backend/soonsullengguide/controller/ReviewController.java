@@ -126,6 +126,7 @@ public class ReviewController {
             reviewMap.put("reviewContent", review.getReviewContent());
             reviewMap.put("stars", review.getStars());
             reviewMap.put("price", review.getPrice());
+            reviewMap.put("reviewDateTime", review.getReviewDateTime().toString());
 
             // 첫 번째 이미지 경로 추가
             if (!review.getImages().isEmpty()) {
