@@ -13,4 +13,6 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     @Query("SELECT r FROM Review r LEFT JOIN FETCH r.images i WHERE i.id = " +
             "(SELECT MIN(img.id) FROM ReviewImage img WHERE img.review = r)")
     List<Review> findAllReviewsWithFirstImage();
+
+    List<Review> findByMenuNameContaining(String keyword);
 }
